@@ -66,23 +66,17 @@ class FloatingActionBubble extends AnimatedWidget {
     Key? key,
     required this.items,
     required this.onPress,
-    required this.iconColor,
     required this.backGroundColor,
     required Animation animation,
+    required this.child,
     this.heroTag,
-    this.iconData,
-    this.animatedIconData,
-  })  : assert((iconData == null && animatedIconData != null) ||
-            (iconData != null && animatedIconData == null)),
-        super(listenable: animation, key: key);
+  })  : super(listenable: animation, key: key);
 
   final List<Bubble> items;
   final void Function() onPress;
-  final AnimatedIconData? animatedIconData;
   final Object? heroTag;
-  final IconData? iconData;
-  final Color iconColor;
   final Color backGroundColor;
+  final Widget child;
 
   get _animation => listenable;
 
@@ -137,16 +131,7 @@ class FloatingActionBubble extends AnimatedWidget {
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
-          child: iconData == null
-              ? AnimatedIcon(
-                  icon: animatedIconData!,
-                  progress: _animation,
-                  color: iconColor,
-                )
-              : Icon(
-                  iconData,
-                  color: iconColor,
-                ),
+          child: child,
           onPressed: onPress,
         ),
       ],

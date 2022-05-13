@@ -110,11 +110,7 @@ class _MyHomePageState extends State<MyHomePage>
               ? _animationController.reverse()
               : _animationController.forward(),
 
-          // Floating Action button Icon color
-          iconColor: Colors.blue,
-
-          // Floating Action button Icon
-          iconData: Icons.ac_unit,
+          child: const Icon(Icons.ac_unit, color: Colors.blue),
           backGroundColor: Colors.white,
         ));
   }
